@@ -5,6 +5,7 @@ public class Msg {
     private String  msg;
     private String name;
     private String  time;
+    private String reply;
 
     public Integer getId() {
         return id;
@@ -36,5 +37,24 @@ public class Msg {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getReply() {
+        return reply;
+    }
+
+    public void setReply(String reply) {
+        this.reply = reply;
+    }
+
+    @Override
+    public String toString() {
+        return "Msg{" +
+                "id=" + id +
+                ", msg='" + msg + '\'' +
+                ", name='" + name + '\'' +
+                ", time='" + time + '\'' +
+                ", reply='" + reply + '\'' +
+                '}';
     }
 }

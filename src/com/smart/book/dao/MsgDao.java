@@ -9,8 +9,12 @@ public interface MsgDao {
 
     public int addMsg(Msg msg);
 
+    public int replay(Msg msg);
+
     public int deleteMsg(Integer id);
 
     public List<Msg> querymsgs();
+
+    public Msg queryMsgById(Integer id);
 
 }

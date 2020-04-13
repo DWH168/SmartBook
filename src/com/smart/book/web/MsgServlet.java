@@ -39,4 +39,26 @@ public class MsgServlet extends BaseServlet {
         String result = "{\"state\":\"success\"}";
         resp.getWriter().print(result);
     }
+    protected void addReply(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        Msg msg = new Msg();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        msg.getName();
+        String gmsg = req.getParameter("content");
+        String name= req.getParameter("name");
+        String time=df.format(new Date());
+        msg.setMsg(gmsg);
+        msg.setName(name);
+        msg.setTime(time);
+        msg.setId(Integer.valueOf(req.getParameter("id")));
+//        msg.setId(29);
+        MsgDaoImpl msgDao =new MsgDaoImpl();
+        System.out.println(msg.toString());
+        msgDao.replay(msg);
+        resp.setContentType("charset=utf-8");
+        String result = "{\"state\":\"success\"}";
+        resp.getWriter().print(result);
+    }
 }
+
+
