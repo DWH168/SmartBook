@@ -5,6 +5,7 @@
 <%@ page import="com.smart.book.pojo.Msg" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.google.gson.JsonObject" %>
+<%@ page import="java.util.Collections" %>
 <%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -78,6 +79,7 @@
                                     msg.setMsg(jsonObject.get("msg").getAsString());
                                     msgs.add(msg);
                                 }
+                                Collections.reverse(msgs);
                                 request.setAttribute("arr_reply",msgs);
                             }
                         %>
@@ -92,7 +94,7 @@
 
                 </div>
                 <div class="reply">
-                    <a class="reply-but" href="#">回复</a>
+                    <a class="reply-but" href="javascript:;">回复</a>
                 </div>
             </div>
         </div>
@@ -165,12 +167,13 @@
                     {
                         $(".reply-div").remove();
                         $(".reply-but").text("回复");
-
-                        console.log("点击了回复");
+                        // console.log("点击了回复");
                         let h=$(this).parent().parent();
                         $(this).text('取消');
-                        h.prepend(inp);
                         $('#list').hide();
+                        h.prepend(inp);
+                        $(this).scrollIntoView(true);
+
                     }
                     else if($(this).html()=='取消')
                     {
